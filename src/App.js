@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+
+const url = 'https://api.giphy.com/v1/gifs/search?api_key=GZbFtMqmfJaKLrAjqo4fczj17AmGHt7V&q=messi&limit=10&offset=0&rating=g&lang=en'
 
 function App() {
+  const [gifs, setGifts] = useState[];
+
+  useEffect(function () {
+    setGifts(differentGifs);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="App-content">
+        {gifs.map((singleGif) => (
+          <img src={singleGif} alt="messi" />
+        ))}
+      </section>
     </div>
   );
 }
